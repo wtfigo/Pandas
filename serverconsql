@@ -1,0 +1,16 @@
+import pyodbc
+import pandas as pd
+
+drv ='{SQL Server}'
+srv = 'PRIORTY'
+db = 'isralasr'
+User = 'tabula'
+Pwd = '5056'
+
+conn = pyodbc.connect('DRIVER='+drv+';SERVER='+srv+';DATABASE='+db+'UID='+User+';PWD='+Pwd+';Trusted_Connection=yes')
+sql = '''
+SELECT * FROM DEAL
+'''
+
+df = pd.read_sql(sql, conn)
+print(df.head())
